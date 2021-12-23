@@ -59,15 +59,15 @@ final class UserPreferencesSetup
 	 * This helps us troubleshoot bugs in the SpecialUserlogin file
 	 * without altering core MW code.
 	 */
-	public static function OverrideMWLocalClass($className,$file)
-	{
-		global $wgAutoloadLocalClasses;
-		if(!isset($wgAutoloadLocalClasses[$className]))
-		{
-			throw new Exception("The class, {$className}, could not be found in \$wgAutoloadLocalClasses.");
-		}
-		$wgAutoloadLocalClasses[$className] = self::$dir .'/classes/'.$file .'.php';
-	}
+	// public static function OverrideMWLocalClass($className,$file)
+	// {
+	// 	global $wgAutoloadLocalClasses;
+	// 	if(!isset($wgAutoloadLocalClasses[$className]))
+	// 	{
+	// 		throw new Exception("The class, {$className}, could not be found in \$wgAutoloadLocalClasses.");
+	// 	}
+	// 	$wgAutoloadLocalClasses[$className] = self::$dir .'/classes/'.$file .'.php';
+	// }
 	
 	public static function onBeforePageDisplay(OutputPage &$out, Skin &$skin ) {
 		global $wgAuthOcdla_ReplaceLogin;
@@ -132,7 +132,7 @@ final class UserPreferencesSetup
 		);
 	
 	
-		$wgHooks['BeforePageDisplay'][] = 'AuthOcdlaSetup::onBeforePageDisplay';
+		$wgHooks['BeforePageDisplay'][] = 'UserPreferencesSetup::onBeforePageDisplay';
 	
 		/**
 		 * Class autoloader.

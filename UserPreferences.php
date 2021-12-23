@@ -47,7 +47,7 @@ $wgExtensionCredits['specialpage'][] = array(
  * Args:
  *  global $wgAuthOcdla_ReplaceLogin, set in LocalSettings.php
  */
-final class AuthOcdlaSetup
+final class UserPreferencesSetup
 {
 	static $dir;
 
@@ -86,7 +86,7 @@ final class AuthOcdlaSetup
 		return true;
 	}
 	
-	public static function SetupAuthOcdla()
+	public static function SetupUserPreferences()
 	{
 		global $wgAuthOcdla_ReplaceLogin,
 	

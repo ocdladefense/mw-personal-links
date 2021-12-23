@@ -1,0 +1,10 @@
+{
+    "name": "ocdladefense/mw-user-preference",
+    "type": "wordpress-theme",
+    "config": {
+        "preferred-install": {
+            "ocdladefense/*": "source"
+        }
+    },
+    "require": {}
+}

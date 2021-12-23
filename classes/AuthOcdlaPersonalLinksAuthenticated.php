@@ -1,6 +1,6 @@
 <?php
 
-class AuthOcdlaPersonalLinksAuthenticated extends AuthOcdlaPersonalLinks
+class AuthOcdlaPersonalLinksAuthenticated extends UserPreferencesPersonalLinks
 {
 	
 	public function __construct($manager)

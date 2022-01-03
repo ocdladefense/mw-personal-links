@@ -133,9 +133,9 @@ class PersonalLinksManager {
 	
 	private function loadTemplates() {
 
-		if ($this->mwUser->mId !== 0) $this->personalLinks = new AuthOcdlaPersonalLinksAuthenticated($this);
+		if ($this->mwUser->mId !== 0) $this->personalLinks = new PersonalLinksAuthenticated($this);
 
-		else $this->personalLinks = new AuthOcdlaPersonalLinksAnonymous($this);
+		else $this->personalLinks = new PersonalLinksAnonymous($this);
 	}
 	
 	

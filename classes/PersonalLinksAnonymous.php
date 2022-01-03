@@ -1,6 +1,6 @@
 <?php
 
-class AuthOcdlaPersonalLinksAnonymous extends PersonalLinks
+class PersonalLinksAnonymous extends PersonalLinks
 {
 	
 	public function __construct(PersonalLinksManager $manager) {

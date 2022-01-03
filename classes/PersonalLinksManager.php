@@ -73,7 +73,7 @@ class PersonalLinksManager {
 	private $useSalesforce = false;
 	
 	
-	public function __construct($settings = array()) {
+	public function __construct() {
 
 		global $cookiePrefix, $wgSiteDirectory, $wgPersonalLinks_LoginURL, $wgPersonalLinks_LogoutURL;
 		  
@@ -81,26 +81,13 @@ class PersonalLinksManager {
 		$this->logoutUrl = $wgPersonalLinks_LogoutURL;
 		$this->requestUrl = $_GET['requestUrl'];
 
-		$this->setUserLoadMethod($settings['userLoadMethod']);
+		$this->mwUser = User::newFromSession();	
 		$this->mwUser->load();
+
 		$this->parseMwUserGroups();
 		$this->loadTemplates();
 	}
-	
-	private function setUserLoadMethod($setting = null) {
 
-		switch($setting) {
-			case 'loadFromUserId':
-				$this->mwUser = User::newFromId($_COOKIE[$cookiePrefix.'UserID']);
-				break;
-			case 'loadFromSession':
-				$this->mwUser = User::newFromSession();				
-				break;
-			default:
-				$this->mwUser = User::newFromSession();
-				break;
-		}
-	}
 	
 	public function getLoginUrl() {
 

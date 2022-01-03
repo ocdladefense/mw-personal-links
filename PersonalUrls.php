@@ -9,9 +9,9 @@ final class PersonalUrls {
 	
 	public static function onBeforePageDisplay(OutputPage &$out, Skin &$skin ) {
 
-		global $wgAuthOcdla_ReplaceLogin;
+		global $wgPersonalUrls_ReplaceLogin;
 
-		if($wgAuthOcdla_ReplaceLogin) $out->addModules('ext.personalUrls');
+		if($wgPersonalUrls_ReplaceLogin) $out->addModules('ext.personalUrls');
 		
 		return true;
 	}

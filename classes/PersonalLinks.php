@@ -58,7 +58,7 @@ class PersonalLinks {
 	
 	public function getLinks() {
 
-		global $wgPersonalUrls_LogoutURL, $wgScriptPath;
+		global $wgPersonalLinks_LogoutURL, $wgScriptPath;
 
 		$keys = func_get_args();
 		// $keys = is_array($key)?$keys:array($keys);
@@ -130,7 +130,7 @@ class PersonalLinks {
 			),
 			'pt-logout' => array(
 				'title' => 'Log out',
-				'href' => $wgPersonalUrls_LogoutURL,
+				'href' => $wgPersonalLinks_LogoutURL,
 				'name' => 'Log out'
 			)
 		);

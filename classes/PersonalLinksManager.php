@@ -75,10 +75,10 @@ class PersonalLinksManager {
 	
 	public function __construct($settings = array()) {
 
-		global $cookiePrefix, $wgSiteDirectory, $wgPersonalUrls_LoginURL, $wgPersonalUrls_LogoutURL;
+		global $cookiePrefix, $wgSiteDirectory, $wgPersonalLinks_LoginURL, $wgPersonalLinks_LogoutURL;
 		  
-		$this->loginUrl = $wgPersonalUrls_LoginURL;
-		$this->logoutUrl = $wgPersonalUrls_LogoutURL;
+		$this->loginUrl = $wgPersonalLinks_LoginURL;
+		$this->logoutUrl = $wgPersonalLinks_LogoutURL;
 		$this->requestUrl = $_GET['requestUrl'];
 
 		$this->setUserLoadMethod($settings['userLoadMethod']);
@@ -104,9 +104,9 @@ class PersonalLinksManager {
 	
 	public function getLoginUrl() {
 
-		global $wgPersonalUrls_HostRedirect;
+		global $wgPersonalLinks_HostRedirect;
 
-		return $this->loginUrl . '?retURL=' . urlencode($wgPersonalUrls_HostRedirect . $this->requestUrl);
+		return $this->loginUrl . '?retURL=' . urlencode($wgPersonalLinks_HostRedirect . $this->requestUrl);
 	}
 	
 	public function isLegComm() {
@@ -121,9 +121,9 @@ class PersonalLinksManager {
 	
 	public function getLogoutUrl() {
 
-		global $wgPersonalUrls_HostRedirect;
+		global $wgPersonalLinks_HostRedirect;
 
-		return $this->logoutUrl . '?retURL='.urlencode($wgPersonalUrls_HostRedirect .$this->requestUrl);
+		return $this->logoutUrl . '?retURL='.urlencode($wgPersonalLinks_HostRedirect .$this->requestUrl);
 	}
 
 	public function listUserGroups() {

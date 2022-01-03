@@ -3,15 +3,15 @@
 if (!defined('MEDIAWIKI')) die();
 
 
-final class PersonalUrls {
+final class PersonalLinksHooks {
 
 	static $dir;
 	
 	public static function onBeforePageDisplay(OutputPage &$out, Skin &$skin ) {
 
-		global $wgPersonalUrls_ReplaceLogin;
+		global $wgPersonalLinks_ReplaceLogin;
 
-		if($wgPersonalUrls_ReplaceLogin) $out->addModules('ext.personalUrls');
+		if($wgPersonalLinks_ReplaceLogin) $out->addModules('ext.personalLinks');
 		
 		return true;
 	}
@@ -24,15 +24,15 @@ final class PersonalUrls {
 	
 	
 	
-		$wgResourceModules['ext.personalUrls'] = array(
-			'scripts' => array( 'personalUrls.js' ),
+		$wgResourceModules['ext.personalLinks'] = array(
+			'scripts' => array( 'personalLinks.js' ),
 			'position' => 'bottom',
-			'remoteBasePath' => '/extensions/PersonalUrls',
-			'localBasePath' => '/extensions/PersonalUrls'
+			'remoteBasePath' => '/extensions/PersonalLinks',
+			'localBasePath' => '/extensions/PersonalLinks'
 		);
 
 	
-		$wgHooks['BeforePageDisplay'][] = 'PersonalUrls::onBeforePageDisplay';
+		$wgHooks['BeforePageDisplay'][] = 'PersonalLinksHooks::onBeforePageDisplay';
 		$wgAutoloadClasses['PersonalLinks'] = self::$dir . '/classes/PersonalLinks.php';
 		$wgAutoloadClasses['PersonalLinksManager'] = self::$dir . '/classes/PersonalLinksManager.php';
 		$wgAutoloadClasses['PersonalLinksAnonymous'] = self::$dir . '/classes/PersonalLinksAnonymous.php';

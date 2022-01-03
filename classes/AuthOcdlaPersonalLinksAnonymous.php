@@ -3,7 +3,7 @@
 class AuthOcdlaPersonalLinksAnonymous extends PersonalLinks
 {
 	
-	public function __construct(AuthOcdlaPersonalLinksManager $manager) {
+	public function __construct(PersonalLinksManager $manager) {
 
 		parent::__construct($manager);
 

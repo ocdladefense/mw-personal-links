@@ -1,7 +1,7 @@
 <?php
 
 
-class AuthOcdlaPersonalLinksManager {
+class PersonalLinksManager {
 
 	// const LOD_SKIN = '/var/www/lodtest/skins/lod/templates';
 	/**

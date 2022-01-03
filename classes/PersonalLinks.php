@@ -9,7 +9,7 @@ class PersonalLinks {
 	protected $attributes = array();
 	
 	
-	public function __construct(AuthOcdlaPersonalLinksManager $manager) {
+	public function __construct(PersonalLinksManager $manager) {
 
 		$this->manager = $manager;		
 	}

@@ -34,7 +34,7 @@ final class PersonalUrls {
 	
 		$wgHooks['BeforePageDisplay'][] = 'PersonalUrls::onBeforePageDisplay';
 		$wgAutoloadClasses['PersonalLinks'] = self::$dir . '/classes/PersonalLinks.php';
-		$wgAutoloadClasses['AuthOcdlaPersonalLinksManager'] = self::$dir . '/classes/AuthOcdlaPersonalLinksManager.php';
+		$wgAutoloadClasses['PersonalLinksManager'] = self::$dir . '/classes/PersonalLinksManager.php';
 		$wgAutoloadClasses['AuthOcdlaPersonalLinksAnonymous'] = self::$dir . '/classes/AuthOcdlaPersonalLinksAnonymous.php';
 		$wgAutoloadClasses['AuthOcdlaPersonalLinksAuthenticated'] = self::$dir . '/classes/AuthOcdlaPersonalLinksAuthenticated.php';
 	}

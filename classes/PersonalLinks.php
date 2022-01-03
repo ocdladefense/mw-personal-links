@@ -1,6 +1,6 @@
 <?php
 
-class UserPreferencesPersonalLinks {
+class PersonalLinks {
 	
 	protected $manager;
 	

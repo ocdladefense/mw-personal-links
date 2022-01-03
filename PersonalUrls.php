@@ -3,7 +3,7 @@
 if (!defined('MEDIAWIKI')) die();
 
 
-final class UserPreferencesSetup {
+final class PersonalUrls {
 
 	static $dir;
 	
@@ -11,12 +11,12 @@ final class UserPreferencesSetup {
 
 		global $wgAuthOcdla_ReplaceLogin;
 
-		if($wgAuthOcdla_ReplaceLogin) $out->addModules('ext.userPreferences');
+		if($wgAuthOcdla_ReplaceLogin) $out->addModules('ext.personalUrls');
 		
 		return true;
 	}
 	
-	public static function SetupUserPreferences() {
+	public static function setup() {
 
 		global $wgResourceModules, $wgAutoloadClasses, $wgHooks;
 	
@@ -24,16 +24,16 @@ final class UserPreferencesSetup {
 	
 	
 	
-		$wgResourceModules['ext.userPreferences'] = array(
-			'scripts' => array( 'userPreferences.js' ),
+		$wgResourceModules['ext.personalUrls'] = array(
+			'scripts' => array( 'personalUrls.js' ),
 			'position' => 'bottom',
-			'remoteBasePath' => '/extensions/UserPreferences',
-			'localBasePath' => '/extensions/UserPreferences'
+			'remoteBasePath' => '/extensions/PersonalUrls',
+			'localBasePath' => '/extensions/PersonalUrls'
 		);
 
 	
-		$wgHooks['BeforePageDisplay'][] = 'UserPreferencesSetup::onBeforePageDisplay';
-		$wgAutoloadClasses['UserPreferencesPersonalLinks'] = self::$dir . '/classes/UserPreferencesPersonalLinks.php';
+		$wgHooks['BeforePageDisplay'][] = 'PersonalUrls::onBeforePageDisplay';
+		$wgAutoloadClasses['PersonalLinks'] = self::$dir . '/classes/PersonalLinks.php';
 		$wgAutoloadClasses['AuthOcdlaPersonalLinksManager'] = self::$dir . '/classes/AuthOcdlaPersonalLinksManager.php';
 		$wgAutoloadClasses['AuthOcdlaPersonalLinksAnonymous'] = self::$dir . '/classes/AuthOcdlaPersonalLinksAnonymous.php';
 		$wgAutoloadClasses['AuthOcdlaPersonalLinksAuthenticated'] = self::$dir . '/classes/AuthOcdlaPersonalLinksAuthenticated.php';

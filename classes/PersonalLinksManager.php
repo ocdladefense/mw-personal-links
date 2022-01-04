@@ -91,9 +91,9 @@ class PersonalLinksManager {
 	
 	public function getLoginUrl() {
 
-		global $wgPersonalLinks_HostRedirect;
+		global $wgScriptPath;
 
-		return $this->loginUrl . '?retURL=' . urlencode($wgPersonalLinks_HostRedirect . $this->requestUrl);
+		return $wgScriptPath . "/index.php" . $this->loginUrl . '?retURL=' . urlencode($this->requestUrl);
 	}
 	
 	public function isLegComm() {
@@ -108,9 +108,9 @@ class PersonalLinksManager {
 	
 	public function getLogoutUrl() {
 
-		global $wgPersonalLinks_HostRedirect;
+		global $wgScriptPath;
 
-		return $this->logoutUrl . '?retURL='.urlencode($wgPersonalLinks_HostRedirect .$this->requestUrl);
+		return $wgScriptPath . "/index.php" . $this->logoutUrl . '?retURL='.urlencode($this->requestUrl);
 	}
 
 	public function listUserGroups() {

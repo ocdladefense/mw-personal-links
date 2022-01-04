@@ -65,7 +65,7 @@ class PersonalLinks {
 		$links = array(
 			'pt-login' 	=> array(
 				'title' 		=> 'You are encouraged to log in; however, it is not mandatory [ctrl-option-o]',
-				'href' 			=> $this->manager->getLoginurl(),
+				'href' 			=> $this->manager->getLoginUrl(),
 				'name' 			=> 'Log in'
 			),
 			'pt-userpage' => array(
@@ -130,7 +130,7 @@ class PersonalLinks {
 			),
 			'pt-logout' => array(
 				'title' => 'Log out',
-				'href' => $wgPersonalLinks_LogoutURL,
+				'href' => $this->manager->getLogoutUrl(),
 				'name' => 'Log out'
 			)
 		);

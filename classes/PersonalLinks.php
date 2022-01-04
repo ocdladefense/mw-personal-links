@@ -1,6 +1,6 @@
 <?php
 
-class UserPreferencesPersonalLinks {
+class PersonalLinks {
 	
 	protected $manager;
 	
@@ -9,7 +9,7 @@ class UserPreferencesPersonalLinks {
 	protected $attributes = array();
 	
 	
-	public function __construct(AuthOcdlaPersonalLinksManager $manager) {
+	public function __construct(PersonalLinksManager $manager) {
 
 		$this->manager = $manager;		
 	}
@@ -58,14 +58,14 @@ class UserPreferencesPersonalLinks {
 	
 	public function getLinks() {
 
-		global $wgAuthOcdla_LogoutURL, $wgScriptPath;
+		global $wgPersonalLinks_LogoutURL, $wgScriptPath;
 
 		$keys = func_get_args();
 		// $keys = is_array($key)?$keys:array($keys);
 		$links = array(
 			'pt-login' 	=> array(
 				'title' 		=> 'You are encouraged to log in; however, it is not mandatory [ctrl-option-o]',
-				'href' 			=> $this->manager->getLoginurl(),
+				'href' 			=> $this->manager->getLoginUrl(),
 				'name' 			=> 'Log in'
 			),
 			'pt-userpage' => array(
@@ -130,7 +130,7 @@ class UserPreferencesPersonalLinks {
 			),
 			'pt-logout' => array(
 				'title' => 'Log out',
-				'href' => $wgAuthOcdla_LogoutURL,
+				'href' => $this->manager->getLogoutUrl(),
 				'name' => 'Log out'
 			)
 		);

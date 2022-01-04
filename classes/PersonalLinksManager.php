@@ -1,7 +1,7 @@
 <?php
 
 
-class AuthOcdlaPersonalLinksManager {
+class PersonalLinksManager {
 
 	// const LOD_SKIN = '/var/www/lodtest/skins/lod/templates';
 	/**
@@ -73,40 +73,27 @@ class AuthOcdlaPersonalLinksManager {
 	private $useSalesforce = false;
 	
 	
-	public function __construct($settings = array()) {
+	public function __construct() {
 
-		global $cookiePrefix, $wgSiteDirectory, $wgAuthOcdla_LoginURL, $wgAuthOcdla_LogoutURL;
+		global $cookiePrefix, $wgSiteDirectory, $wgPersonalLinks_LoginURL, $wgPersonalLinks_LogoutURL;
 		  
-		$this->loginUrl = $wgAuthOcdla_LoginURL;
-		$this->logoutUrl = $wgAuthOcdla_LogoutURL;
+		$this->loginUrl = $wgPersonalLinks_LoginURL;
+		$this->logoutUrl = $wgPersonalLinks_LogoutURL;
 		$this->requestUrl = $_GET['requestUrl'];
 
-		$this->setUserLoadMethod($settings['userLoadMethod']);
+		$this->mwUser = User::newFromSession();	
 		$this->mwUser->load();
+
 		$this->parseMwUserGroups();
 		$this->loadTemplates();
 	}
-	
-	private function setUserLoadMethod($setting = null) {
 
-		switch($setting) {
-			case 'loadFromUserId':
-				$this->mwUser = User::newFromId($_COOKIE[$cookiePrefix.'UserID']);
-				break;
-			case 'loadFromSession':
-				$this->mwUser = User::newFromSession();				
-				break;
-			default:
-				$this->mwUser = User::newFromSession();
-				break;
-		}
-	}
 	
 	public function getLoginUrl() {
 
-		global $wgAuthOcdla_HostRedirect;
+		global $wgScriptPath;
 
-		return $this->loginUrl . '?retURL=' . urlencode($wgAuthOcdla_HostRedirect . $this->requestUrl);
+		return $wgScriptPath . "/index.php" . $this->loginUrl . '?retURL=' . urlencode($this->requestUrl);
 	}
 	
 	public function isLegComm() {
@@ -121,9 +108,9 @@ class AuthOcdlaPersonalLinksManager {
 	
 	public function getLogoutUrl() {
 
-		global $wgAuthOcdla_HostRedirect;
+		global $wgScriptPath;
 
-		return $this->logoutUrl . '?retURL='.urlencode($wgAuthOcdla_HostRedirect .$this->requestUrl);
+		return $wgScriptPath . "/index.php" . $this->logoutUrl . '?retURL='.urlencode($this->requestUrl);
 	}
 
 	public function listUserGroups() {
@@ -133,9 +120,9 @@ class AuthOcdlaPersonalLinksManager {
 	
 	private function loadTemplates() {
 
-		if ($this->mwUser->mId !== 0) $this->personalLinks = new AuthOcdlaPersonalLinksAuthenticated($this);
+		if ($this->mwUser->mId !== 0) $this->personalLinks = new PersonalLinksAuthenticated($this);
 
-		else $this->personalLinks = new AuthOcdlaPersonalLinksAnonymous($this);
+		else $this->personalLinks = new PersonalLinksAnonymous($this);
 	}
 	
 	

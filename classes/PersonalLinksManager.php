@@ -93,7 +93,7 @@ class PersonalLinksManager {
 
 		global $wgScriptPath;
 
-		return $wgScriptPath . $this->loginUrl . '?retURL=' . urlencode($this->requestUrl);
+		return $wgScriptPath . $this->loginUrl;
 	}
 	
 	public function isLegComm() {
@@ -110,7 +110,7 @@ class PersonalLinksManager {
 
 		global $wgScriptPath;
 
-		return $wgScriptPath . $this->logoutUrl . '?retURL='.urlencode($this->requestUrl);
+		return $wgScriptPath . $this->logoutU;
 	}
 
 	public function listUserGroups() {

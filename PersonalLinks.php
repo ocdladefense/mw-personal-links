@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('MEDIAWIKI')) die();
+if (!defined("MEDIAWIKI")) die();
 
 
 final class PersonalLinksHooks {
@@ -9,7 +9,7 @@ final class PersonalLinksHooks {
 	
 	public static function onBeforePageDisplay(OutputPage &$out, Skin &$skin ) {
 
-		$out->addModules('ext.personalLinks');
+		$out->addModules("ext.personalLinks");
 		
 		return true;
 	}
@@ -44,26 +44,26 @@ final class PersonalLinksHooks {
 	
 	public static function setup() {
 
-		global $wgResourceModules, $wgAutoloadClasses, $wgHooks;
+		global $wgResourceModules, $wgAutoloadClasses, $wgHooks, $wgScriptPath;
 	
 		self::$dir = dirname(__FILE__);
+		//http://localhost/extensions/PersonalLinks/personalLinks.js
+		//http://localhost/mwiki/extensions/PersonalLinks/personalLinks.js
 	
-	
-	
-		$wgResourceModules['ext.personalLinks'] = array(
-			'scripts' => array( 'personalLinks.js' ),
-			'position' => 'bottom',
-			'remoteBasePath' => '/extensions/PersonalLinks',
-			'localBasePath' => '/extensions/PersonalLinks'
+		$wgResourceModules["ext.personalLinks"] = array(
+			"scripts" => array( "personalLinks.js" ),
+			"position" => "bottom",
+			"remoteBasePath" => "extensions/PersonalLinks",
+			"localBasePath" => "extensions/PersonalLinks"
 		);
 
 	
-		$wgHooks['BeforePageDisplay'][] = 'PersonalLinksHooks::onBeforePageDisplay';
-		$wgHooks['PersonalUrls'][] = 'OAuthHooks::onPersonalUrls';
+		$wgHooks["BeforePageDisplay"][] = "PersonalLinksHooks::onBeforePageDisplay";
+		$wgHooks["PersonalUrls"][] = "OAuthHooks::onPersonalUrls";
 
-		$wgAutoloadClasses['PersonalLinks'] = self::$dir . '/classes/PersonalLinks.php';
-		$wgAutoloadClasses['PersonalLinksManager'] = self::$dir . '/classes/PersonalLinksManager.php';
-		$wgAutoloadClasses['PersonalLinksAnonymous'] = self::$dir . '/classes/PersonalLinksAnonymous.php';
-		$wgAutoloadClasses['PersonalLinksAuthenticated'] = self::$dir . '/classes/PersonalLinksAuthenticated.php';
+		$wgAutoloadClasses["PersonalLinks"] = self::$dir . "/classes/PersonalLinks.php";
+		$wgAutoloadClasses["PersonalLinksManager"] = self::$dir . "/classes/PersonalLinksManager.php";
+		$wgAutoloadClasses["PersonalLinksAnonymous"] = self::$dir . "/classes/PersonalLinksAnonymous.php";
+		$wgAutoloadClasses["PersonalLinksAuthenticated"] = self::$dir . "/classes/PersonalLinksAuthenticated.php";
 	}
 }

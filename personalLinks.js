@@ -5,8 +5,6 @@ $userInfoLoad = $.ajax({
 	url:'/user-info.php',
 	data:{'requestUrl':window.location.pathname},
 	dataType:'json'});
-
-console.log($userInfoLoad);
 	
 $userInfoLoad.done(function(data){
 	// drawer-p-personal

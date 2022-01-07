@@ -25,7 +25,7 @@ final class PersonalLinksHooks {
         } else {
             
             $personal_urls["login"]["text"] = "OCDLA login";
-            $personal_urls["login"]["href"] = "$wgScriptPath/index.php/" . $wgPersonalLinks_LoginURL;
+            $personal_urls["login"]["href"] = "$wgScriptPath/$wgPersonalLinks_LoginURL";
             $personal_urls["login"]["active"] = true;
 
             unset($personal_urls["anonuserpage"]);
@@ -47,13 +47,11 @@ final class PersonalLinksHooks {
 		global $wgResourceModules, $wgAutoloadClasses, $wgHooks, $wgScriptPath;
 	
 		self::$dir = dirname(__FILE__);
-		//http://localhost/extensions/PersonalLinks/personalLinks.js
-		//http://localhost/mwiki/extensions/PersonalLinks/personalLinks.js
 	
 		$wgResourceModules["ext.personalLinks"] = array(
 			"scripts" => array( "personalLinks.js" ),
 			"position" => "bottom",
-			"remoteBasePath" => "extensions/PersonalLinks",
+			"remoteBasePath" => "/extensions/PersonalLinks",
 			"localBasePath" => "extensions/PersonalLinks"
 		);
 
